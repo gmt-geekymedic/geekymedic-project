@@ -1,0 +1,20 @@
+{
+  "group": {
+    "group1": "公共分组1",
+    "group2": "公共分组2",
+    "group3": "公共分组3",
+    "group4": "公共分组4"
+  },
+  "type": {
+    "type1": "类型1",
+    "type2": "类型2",
+    "type3": "类型3",
+    "type4": "类型4"
+  },
+  "secondType": {
+    "secondType1": "二级类型1",
+    "secondType2": "二级类型2",
+    "secondType3": "二级类型3",
+    "secondType4": "二级类型4"
+  }
+}

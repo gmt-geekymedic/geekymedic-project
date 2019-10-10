@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "http://store.gmtshenzhen.cn",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

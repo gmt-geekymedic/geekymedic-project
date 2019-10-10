@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "Alain",
+    "description": "Ng-zorro admin panel front-end framework"
+  },
+  "user": {
+    "name": "Admin",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "cipchk@qq.com"
+  },
+  "menu": [
+    {
+      "text": "主导航",
+      "group": false,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "仪表盘",
+          "link": "/dashboard",
+          "icon": {
+            "type": "icon",
+            "value": "appstore"
+          }
+        },
+        {
+          "text": "示例",
+          "link": "/demo",
+          "icon": {
+            "type": "icon",
+            "value": "api"
+          },
+          "children": [
+            { "text": "字典管道", "link": "/demo/dic" },
+            { "text": "字典选择器", "link": "/demo/dic-select" },
+            { "text": "弹窗", "link": "/demo/modal" },
+            { "text": "搜索条件", "link": "/demo/search" },
+            { "text": "高德地图", "link": "/demo/amap" }
+          ]
+        }
+      ]
+    }
+  ]
+}

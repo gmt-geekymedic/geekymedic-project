@@ -1,0 +1,21 @@
+<page-header></page-header>
+<sv-container>
+  <sv label="公共字典示例">
+    <nz-select>
+      <nz-option *ngFor="let option of commonTypes" [nzValue]="option.key" [nzLabel]="option.value">
+      </nz-option>
+    </nz-select>
+  </sv>
+  <sv label="业务1示例">
+    <nz-select>
+      <nz-option *ngFor="let option of bus1Types" [nzValue]="option.key" [nzLabel]="option.value">
+      </nz-option>
+    </nz-select>
+  </sv>
+  <sv label="业务2示例">
+    <nz-select>
+      <nz-option *ngFor="let option of bus2Types" [nzValue]="option.key" [nzLabel]="option.value">
+      </nz-option>
+    </nz-select>
+  </sv>
+</sv-container>

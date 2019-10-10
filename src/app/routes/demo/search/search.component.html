@@ -1,0 +1,42 @@
+<page-header></page-header>
+<p>搜索条件推荐使用响应式表单，并订阅除input输入框外其它条件的变更通知，并在变更时重新查询数据，具体参考示例代码
+</p>
+<p>下拉选项在字典中配置，提高复用，方便修改
+</p>
+<form class="search__form" nz-form [formGroup]="searchForm" [nzLayout]="'inline'">
+  <div nz-row [nzGutter]="{ xs: 8, sm: 8, md: 8, lg: 24, xl: 48, xxl: 48 }">
+    <div nz-col nzMd="8" nzSm="24">
+      <nz-form-item>
+        <nz-form-label nzFor="keyword">关键词</nz-form-label>
+        <nz-form-control>
+          <input nz-input placeholder="通用名/商品名模糊搜索" id="keyword" formControlName="keyword">
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzMd="6" nzSm="24">
+      <nz-form-item>
+        <nz-form-label nzFor="type">分类</nz-form-label>
+        <nz-form-control>
+          <nz-select id="type" formControlName="type">
+            <nz-option *ngFor="let option of types" [nzValue]="option.key" [nzLabel]="option.value">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzMd="6" nzSm="24">
+      <nz-form-item>
+        <nz-form-label nzFor="secondType">二级分类</nz-form-label>
+        <nz-form-control>
+          <nz-select id="secondType" formControlName="secondType">
+            <nz-option *ngFor="let option of secondTypes" [nzValue]="option.key" [nzLabel]="option.value">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzMd="4" nzSm="24">
+      <button nz-button nzType="primary" (click)="searchData(true)"><i nz-icon nzType="search"></i>搜索</button>
+    </div>
+  </div>
+</form>
