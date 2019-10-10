@@ -41,7 +41,7 @@
     "@delon/mock": "^8.4.0",
     "@delon/theme": "^8.4.0",
     "@delon/util": "^8.4.0",
-    "@geekymedic/common": "0.0.5",
+    "@geekymedic/common": "0.0.6",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "ajv": "^6.10.2",
