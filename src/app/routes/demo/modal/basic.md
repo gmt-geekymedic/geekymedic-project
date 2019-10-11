@@ -1,23 +1,15 @@
-import { Component, OnInit, Injector } from '@angular/core';
-import { BaseComponent } from '@geekymedic/common';
-import { UserModalComponent } from './user-modal/user-modal.component';
-import * as _ from 'lodash';
-import basicmd from 'raw-loader!./basic.md';
+### modal
 
-@Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styles: ['.ant-btn{margin-bottom:8px;}'],
-})
++ 要弹出的内容封装到组件中，并注册到entryComponents上，弹窗的输入参数通过nzComponentParams传入，输出在nzOnOk里通过componentInstance获取
+
+```typescript
 export class ModalComponent extends BaseComponent implements OnInit {
   constructor(injector: Injector) {
     super(injector);
   }
 
-  basicmd;
   dataSet = [];
   ngOnInit() {
-    this.basicmd = basicmd;
   }
   addRow() {
     this.startEdit();
@@ -48,3 +40,5 @@ export class ModalComponent extends BaseComponent implements OnInit {
     });
   }
 }
+
+```

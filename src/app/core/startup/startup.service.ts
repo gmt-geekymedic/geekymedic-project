@@ -12,6 +12,7 @@ import { I18NService } from '../services/i18n.service';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { ICONS_AUTO } from '../../../style-icons-auto';
 import { ICONS } from '../../../style-icons';
+import { environment } from '@env/environment';
 
 /**
  * Used for application startup
@@ -56,6 +57,24 @@ export class StartupService {
           // ACL: Set the permissions to full, https://ng-alain.com/acl/getting-started
           this.aclService.setFull(true);
           // Menu data, https://ng-alain.com/theme/menu
+          // 非产品模式添加demo菜单,业务菜单请直接在appdata.json中添加
+          if (!environment.production) {
+            res.menu[0].children.push({
+              text: '示例',
+              link: '/demo',
+              icon: {
+                type: 'icon',
+                value: 'api',
+              },
+              children: [
+                { text: '字典', link: '/demo/dic' },
+                { text: '搜索条件', link: '/demo/search' },
+                { text: '弹窗', link: '/demo/modal' },
+                { text: '高德地图', link: '/demo/amap' },
+                { text: 'rxjs', link: '/demo/rxjs' },
+              ],
+            });
+          }
           this.menuService.add(res.menu);
           // Can be set page suffix title, https://ng-alain.com/theme/title
           this.titleService.suffix = res.app.name;

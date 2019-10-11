@@ -1,0 +1,85 @@
+.code-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 16px;
+  border: 1px solid #ebedf0;
+  border-radius: 2px;
+  transition: all .2s;
+  background: white;
+
+  .code-box-demo {
+    padding: 24px 24px 50px;
+    color: rgba(0, 0, 0, .65);
+    border-bottom: 1px solid #ebedf0;
+  }
+
+  .code-box-meta.markdown {
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 0 0 2px 2px;
+    transition: background-color .4s;
+    color: #314659;
+    line-height: 2;
+  }
+
+  .code-box-title {
+    position: absolute;
+    top: -14px;
+    margin-left: 16px;
+    padding: 1px 8px;
+    color: #777;
+    background: #fff;
+    border-radius: 2px 2px 0 0;
+    transition: background-color .4s;
+
+    a {
+      color: #314659;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+
+  .code-box-description {
+    padding: 18px 24px 12px;
+  }
+
+  .code-box-actions {
+    padding-top: 12px;
+    text-align: center;
+    border-top: 1px dashed #ebedf0;
+    opacity: .7;
+    transition: opacity .3s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .code-expand-icon {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 16px;
+    vertical-align: top;
+    cursor: pointer;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      box-shadow: none;
+      transition: all .4s;
+      user-select: none;
+    }
+  }
+
+  ::ng-deep code {
+    border: none;
+  }
+}

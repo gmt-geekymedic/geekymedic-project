@@ -1,0 +1,45 @@
+<page-header></page-header>
+<app-code-box title="管道" description="通过管道将字典的key转换为value显示" [code]="pipemd">
+  <sv-container>
+    <sv label="公共字典示例">
+      <p>{{'group.group1' | translate}}</p>
+      <p>{{'group.group2' | translate}}</p>
+      <p>{{'group.group3' | translate}}</p>
+      <p>{{'group.group4' | translate}}</p>
+    </sv>
+    <sv label="业务1示例">
+      <p>{{'bus1.group.group1' | translate}}</p>
+      <p>{{'bus1.group.group2' | translate}}</p>
+      <p>{{'bus1.group.group3' | translate}}</p>
+      <p>{{'bus1.group.group4' | translate}}</p>
+    </sv>
+    <sv label="业务2示例">
+      <p>{{'bus2.group.group1' | translate}}</p>
+      <p>{{'bus2.group.group2' | translate}}</p>
+      <p>{{'bus2.group.group3' | translate}}</p>
+      <p>{{'bus2.group.group4' | translate}}</p>
+    </sv>
+  </sv-container>
+</app-code-box>
+<app-code-box title="选择器" description="将下拉选项放到字典，方便复用" [code]="selectmd">
+  <sv-container>
+    <sv label="公共字典示例">
+      <nz-select>
+        <nz-option *ngFor="let option of commonTypes" [nzValue]="option.key" [nzLabel]="option.value">
+        </nz-option>
+      </nz-select>
+    </sv>
+    <sv label="业务1示例">
+      <nz-select>
+        <nz-option *ngFor="let option of bus1Types" [nzValue]="option.key" [nzLabel]="option.value">
+        </nz-option>
+      </nz-select>
+    </sv>
+    <sv label="业务2示例">
+      <nz-select>
+        <nz-option *ngFor="let option of bus2Types" [nzValue]="option.key" [nzLabel]="option.value">
+        </nz-option>
+      </nz-select>
+    </sv>
+  </sv-container>
+</app-code-box>

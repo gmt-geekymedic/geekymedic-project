@@ -68,7 +68,8 @@ const INTERCEPTOR_PROVIDES = [
 // #endregion
 
 // #region global third module
-const GLOBAL_THIRD_MODULES = [];
+import { MarkdownModule } from 'ngx-markdown';
+const GLOBAL_THIRD_MODULES = [MarkdownModule.forRoot({ loader: HttpClient })];
 // #endregion
 
 // #region Startup Service

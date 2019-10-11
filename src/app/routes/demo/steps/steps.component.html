@@ -1,0 +1,12 @@
+<div class="steps">
+  <span class="step" *ngFor="let item of steps" [ngClass]="{'step-finish': item.finish}">
+    <div class="step-icon" [nz-tooltip]="tooltipTpl"></div>
+    <ng-template #tooltipTpl>
+      <div class="step-tooltip">
+        <span>{{item.name}}</span>
+        <br>
+        <span>{{item.time}}</span>
+      </div>
+    </ng-template>
+  </span>
+</div>

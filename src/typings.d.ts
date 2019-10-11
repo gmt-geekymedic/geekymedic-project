@@ -10,3 +10,5 @@ declare var Slider: any;
 // 高德地图
 declare var AMap: any;
 declare var AMapUI: any;
+
+declare module '*.md';

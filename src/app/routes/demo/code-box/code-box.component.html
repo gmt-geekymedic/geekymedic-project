@@ -1,0 +1,22 @@
+<section class="code-box">
+  <section class="code-box-demo">
+    <ng-content></ng-content>
+  </section>
+  <section class="code-box-meta markdown">
+    <div class="code-box-title"><a>{{title}}</a></div>
+    <div class="code-box-description">
+      <span>{{description}}</span>
+    </div>
+    <div class="code-box-actions">
+      <span class="code-expand-icon" [nz-tooltip]="showCode?'折叠自述文件':'显示自述文件'" (click)="showCode=!showCode">
+        <img [hidden]="!showCode" alt="expand code"
+          src="https://gw.alipayobjects.com/zos/rmsportal/wSAkBuJFbdxsosKKpqyq.svg">
+        <img [hidden]="showCode" alt="expand code"
+          src="https://gw.alipayobjects.com/zos/rmsportal/OpROPHYqWmrMDBFMZtKF.svg">
+      </span>
+    </div>
+  </section>
+  <section class="highlight-wrapper">
+    <markdown [hidden]="!showCode" [data]="code"></markdown>
+  </section>
+</section>

@@ -28,11 +28,6 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
       { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
       // 业务子模块
-      {
-        path: 'demo',
-        loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule),
-        data: { preload: true },
-      },
     ],
   },
   // 全屏布局
@@ -57,6 +52,15 @@ const routes: Routes = [
   { path: 'callback/:type', component: CallbackComponent },
   { path: '**', redirectTo: 'exception/404' },
 ];
+
+// 非产品模式添加demo模块路由
+if (!environment.production) {
+  routes[0].children.push({
+    path: 'demo',
+    loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule),
+    data: { preload: true },
+  });
+}
 
 @NgModule({
   imports: [

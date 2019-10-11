@@ -1,8 +1,9 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { BaseComponent } from '@geekymedic/common';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { merge } from 'rxjs';
 import { I18NService } from '@core';
+import basicmd from 'raw-loader!./basic.md';
 
 @Component({
   selector: 'app-search',
@@ -10,16 +11,20 @@ import { I18NService } from '@core';
   styles: [],
 })
 export class SearchComponent extends BaseComponent implements OnInit {
-  constructor(injector: Injector, private fb: FormBuilder, private i18nService: I18NService) {
+  constructor(injector: Injector, private i18nService: I18NService) {
     super(injector);
   }
+
+  basicmd;
   searchForm: FormGroup;
   types = [];
   secondTypes = [];
+
   ngOnInit() {
+    this.basicmd = basicmd;
     this.types = this.i18nService.getDic('type');
     this.secondTypes = this.i18nService.getDic('secondType');
-    this.searchForm = this.fb.group({
+    this.searchForm = this.formBuilder.group({
       keyword: [''],
       type: [''],
       secondType: [''],

@@ -1,26 +1,27 @@
 <page-header></page-header>
-<p>弹窗推荐使用js弹窗方式，要弹出的内容封装到组件中，并注册到entryComponents上，弹窗的输入参数通过nzComponentParams传入，输出在nzOnOk里通过componentInstance获取，具体参考示例代码
-</p>
-<button nz-button nzType="primary" (click)="addRow()">新增用户</button>
-<nz-table #ajaxTable nzBordered nzShowQuickJumper nzShowSizeChanger nzSize="small" [nzData]="dataSet">
-  <thead>
-    <tr>
-      <th nzWidth="15%" class="text-center">序号</th>
-      <th nzWidth="35%">用户名</th>
-      <th nzWidth="35%">描述</th>
-      <th nzWidth="15%">操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of ajaxTable.data;let i = index">
-      <td class="text-center">{{i+1}}</td>
-      <td>{{data.name}}</td>
-      <td>{{data.description}}</td>
-      <td>
-        <a nz-tooltip="编辑">
-          <i nz-icon nzType="edit" (click)="startEdit(data.id)"></i>
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</nz-table>
+<app-code-box title="弹窗" description="推荐使用加载Component的方式弹出Modal，这样弹出层的Component逻辑可以与外层Component完全隔离，并且做到可以随时复用"
+  [code]="basicmd">
+  <button nz-button nzType="primary" (click)="addRow()">新增用户</button>
+  <nz-table #ajaxTable nzBordered nzShowQuickJumper nzShowSizeChanger nzSize="small" [nzData]="dataSet">
+    <thead>
+      <tr>
+        <th nzWidth="15%" class="text-center">序号</th>
+        <th nzWidth="35%">用户名</th>
+        <th nzWidth="35%">描述</th>
+        <th nzWidth="15%">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of ajaxTable.data;let i = index">
+        <td class="text-center">{{i+1}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.description}}</td>
+        <td>
+          <a nz-tooltip="编辑">
+            <i nz-icon nzType="edit" (click)="startEdit(data.id)"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</app-code-box>

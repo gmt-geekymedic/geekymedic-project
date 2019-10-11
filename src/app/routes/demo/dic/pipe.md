@@ -1,6 +1,7 @@
 ### dic-pipe
 
-比如字典{'group1':'分组1','group2':'分组2','group3':'分组3','group4':'分组4'}，数据库中一般存的是key，前端界面需要显示value，
+比如字典{'group1':'分组1','group2':'分组2','group3':'分组3','group4':'分组4'}，数据库中一般存的是key，前端界面需要显示value
+
 + 传统方法通过if判断，在前端界面显示对应的值，如果字典发生了变化，前端要大面积改代码
 
 ```html
@@ -17,8 +18,3 @@
     <p>{{'group.group3' | translate}}</p>
     <p>{{'group.group4' | translate}}</p>
 ```
-  
-  
-
-#### 备注
-

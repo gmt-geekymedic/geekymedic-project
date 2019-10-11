@@ -2,32 +2,22 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ACLGuard } from '@delon/acl';
 
-import { DicPipeComponent } from './dic-pipe/dic-pipe.component';
+import { DicComponent } from './dic/dic.component';
 import { ModalComponent } from './modal/modal.component';
 import { SearchComponent } from './search/search.component';
 import { AmapComponent } from './amap/amap.component';
-import { DicSelectComponent } from './dic-select/dic-select.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dic', pathMatch: 'full' },
   {
     path: 'dic',
-    component: DicPipeComponent,
+    component: DicComponent,
     canActivate: [ACLGuard],
     data: {
-      breadcrumb: '字典管道',
-      title: '字典管道',
+      breadcrumb: '字典',
+      title: '字典',
       guard: { ability: ['dic'] },
-    },
-  },
-  {
-    path: 'dic-select',
-    component: DicSelectComponent,
-    canActivate: [ACLGuard],
-    data: {
-      breadcrumb: '字典选择器',
-      title: '字典选择器',
-      guard: { ability: ['dic-select'] },
     },
   },
   {
@@ -60,6 +50,7 @@ const routes: Routes = [
       guard: { ability: ['map'] },
     },
   },
+  { path: 'rxjs', component: RxjsComponent },
 ];
 
 @NgModule({

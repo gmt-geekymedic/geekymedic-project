@@ -32,6 +32,3 @@ export class DicSelectComponent extends BaseComponent implements OnInit {
 }
 
 ```
-
-#### 备注
-

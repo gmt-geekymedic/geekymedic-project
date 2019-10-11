@@ -1,20 +1,13 @@
-import { Component, OnInit, Injector } from '@angular/core';
-import { MapService } from '@shared/services';
-import { BaseComponent } from '@geekymedic/common';
-import basicmd from 'raw-loader!./basic.md';
+### amap
 
-@Component({
-  selector: 'app-amap',
-  templateUrl: './amap.component.html',
-  styleUrls: ['./amap.component.scss'],
-})
++ 加载高德地图类库，创建地图实例
+
+```typescript
 export class AmapComponent extends BaseComponent implements OnInit {
   constructor(injector: Injector, private mapService: MapService) {
     super(injector);
   }
-  basicmd;
   ngOnInit() {
-    this.basicmd = basicmd;
     this.mapService.loadAMap().subscribe({
       complete: () => {
         const map = new AMap.Map('mapContainer', {
@@ -27,3 +20,4 @@ export class AmapComponent extends BaseComponent implements OnInit {
     });
   }
 }
+```
