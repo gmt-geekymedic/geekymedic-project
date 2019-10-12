@@ -257,9 +257,23 @@ NEVER.subscribe({
 
 ### 常用管道操作符
 
+高阶Observable就是Observable套Observable
+
 + 转换型操作符
    + map 映射，map(x => x*10)
    + mapTo 所有的值都映射到一个结果，mapTo(10)
+   + reduce 类似Array的reduce方法，当源流完成时发射最终结果，reduce((prev, item) => prev + item, seed)
+   + scan 类似reduce，但是源流每发射一个值，都会发射一个中间值，scan((prev, item) => prev + item, seed)
+   + combineAll
+   + concatAll 将高阶Observable展平为低阶Observable，内部Observable完成后外部Observable才能触发下一个
+   + mergeAll 类似concatAll，外部发射值时，内部Observable可以同时发射值
+   + exhaust
+   + switchAll
+   + concatMap 相当于concatAll+map
+   + mergeMap 相当于mergeAll+map
+   + flatMap 
+   + exhaustMap
+   + switchMap 相当于switchAll+map
 
 + 过滤型操作符
    + filter 过滤，filter(x => x === 10)
