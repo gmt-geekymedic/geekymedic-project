@@ -13,9 +13,6 @@ export class RxjsComponent extends BaseComponent implements OnInit {
   }
   basicmd;
   ngOnInit() {
-    this.basicmd = basicmd.replace(
-      /images\//g,
-      'https://github.com/gmt-geekymedic/geekymedic-project/tree/master/src/app/routes/demo/rxjs/images/',
-    );
+    this.basicmd = basicmd;
   }
 }

@@ -238,22 +238,22 @@ NEVER.subscribe({
 ### 连接创建操作符
 
 + combineLatest 并行执行多个Observable，用每个Observable的最新值组成一个数组并发射
-![combineLatest](images/combineLatest.png)
+![combineLatest](assets/tmp/img/rxjs/combineLatest.png)
 
 + concat 串行执行多个Observable，前一个Observable完成才会执行下一个，并发射每个Obserable的值(参数不要传数组)
-![concat](images/concat.png)
+![concat](assets/tmp/img/rxjs/concat.png)
 
 + forkJoin 并行执行多个Observable，当所有Observable都完成时，将最新值组成一个数组并发射
-![forkJoin](images/forkJoin.png)
+![forkJoin](assets/tmp/img/rxjs/forkJoin.png)
 
 + merge 并行执行多个Observable，并发射每个Obserable的值(参数不要传数组)
-![merge](images/merge.png)
+![merge](assets/tmp/img/rxjs/merge.png)
 
 + zip 并行执行多个Observable，用每个Observable的相同下标的值组成一个数组并发射(参数不要传数组)
-  ![zip](images/zip.png)
+  ![zip](assets/tmp/img/rxjs/zip.png)
 
 + race 多个Observable赛跑，返回第一个发射值的Observable
-![race](images/race.png)
+![race](assets/tmp/img/rxjs/race.png)
 
 ### 常用管道操作符
 
