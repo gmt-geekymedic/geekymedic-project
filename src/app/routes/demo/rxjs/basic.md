@@ -264,16 +264,20 @@ NEVER.subscribe({
    + mapTo 所有的值都映射到一个结果，mapTo(10)
    + reduce 类似Array的reduce方法，当源流完成时发射最终结果，reduce((prev, item) => prev + item, seed)
    + scan 类似reduce，但是源流每发射一个值，都会发射一个中间值，scan((prev, item) => prev + item, seed)
-   + combineAll
-   + concatAll 将高阶Observable展平为低阶Observable，内部Observable完成后外部Observable才能触发下一个
+   + combineAll 将高阶Observable展平为低阶Observable，外部完成时，对内部Observable应用combineLatest操作符
+   ![combineAll](assets/tmp/img/rxjs/combineAll.png)
+   + concatAll 将高阶Observable展平为低阶Observable，外部发射值时，内部Observable完成后外部Observable才能触发下一个
+   ![concatAll](assets/tmp/img/rxjs/concatAll.png)
    + mergeAll 类似concatAll，外部发射值时，内部Observable可以同时发射值
-   + exhaust
-   + switchAll
+   ![mergeAll](assets/tmp/img/rxjs/mergeAll.png)
+   + switchAll 将高阶Observable展平为低阶Observable，外部发射值时，仅从最新的内部Observable发射值
+   ![switchAll](assets/tmp/img/rxjs/switchAll.png)
+   + exhaust 将高阶Observable展平为低阶Observable，外部发射值时，如果内部Observable未完成，则忽略新的内部Observable
+   ![exhaust](assets/tmp/img/rxjs/exhaust.png)
    + concatMap 相当于concatAll+map
    + mergeMap 相当于mergeAll+map
-   + flatMap 
-   + exhaustMap
    + switchMap 相当于switchAll+map
+   + exhaustMap 相当于exhaust+map
 
 + 过滤型操作符
    + filter 过滤，filter(x => x === 10)
