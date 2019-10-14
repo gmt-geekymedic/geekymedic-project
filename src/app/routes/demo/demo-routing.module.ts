@@ -7,6 +7,7 @@ import { ModalComponent } from './modal/modal.component';
 import { SearchComponent } from './search/search.component';
 import { AmapComponent } from './amap/amap.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { HttpTimeoutComponent } from './http-timeout/http-timeout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dic', pathMatch: 'full' },
@@ -51,6 +52,7 @@ const routes: Routes = [
     },
   },
   { path: 'rxjs', component: RxjsComponent },
+  { path: 'timeout', component: HttpTimeoutComponent },
 ];
 
 @NgModule({

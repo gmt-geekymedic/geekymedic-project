@@ -1,0 +1,6 @@
+<page-header></page-header>
+<app-code-box title="http请求超时" description="http请求超时处理，全局配置、单个配置" [code]="basicmd">
+  <input nz-input [(ngModel)]="url">
+  <button nz-button nzType="primary" (click)="globalClick()">全局请求(30s超时)</button>
+  <button nz-button nzType="default" (click)="singleClick()">单个请求(1ms超时)</button>
+</app-code-box>

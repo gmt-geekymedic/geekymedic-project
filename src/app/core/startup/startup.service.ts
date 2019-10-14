@@ -72,6 +72,7 @@ export class StartupService {
                 { text: '弹窗', link: '/demo/modal' },
                 { text: '高德地图', link: '/demo/amap' },
                 { text: 'rxjs', link: '/demo/rxjs' },
+                { text: 'http请求超时', link: '/demo/timeout' },
               ],
             });
           }

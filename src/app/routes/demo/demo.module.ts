@@ -11,6 +11,7 @@ import { AmapComponent } from './amap/amap.component';
 import { CodeBoxComponent } from './code-box/code-box.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { StepsComponent } from './steps/steps.component';
+import { HttpTimeoutComponent } from './http-timeout/http-timeout.component';
 
 const COMPONENTS = [
   DicComponent,
@@ -20,6 +21,7 @@ const COMPONENTS = [
   CodeBoxComponent,
   RxjsComponent,
   StepsComponent,
+  HttpTimeoutComponent,
 ];
 const COMPONENTS_NOROUNT = [UserModalComponent];
 
