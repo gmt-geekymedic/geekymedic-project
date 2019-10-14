@@ -266,7 +266,7 @@ NEVER.subscribe({
    + scan 类似reduce，但是源流每发射一个值，都会发射一个中间值，scan((prev, item) => prev + item, seed)
    + combineAll 将高阶Observable展平为低阶Observable，外部完成时，对内部Observable应用combineLatest操作符
    ![combineAll](assets/tmp/img/rxjs/combineAll.png)
-   + concatAll 将高阶Observable展平为低阶Observable，外部发射值时，内部Observable完成后外部Observable才能触发下一个
+   + concatAll 将高阶Observable展平为低阶Observable，外部发射值时，内部Observable按顺序执行
    ![concatAll](assets/tmp/img/rxjs/concatAll.png)
    + mergeAll 类似concatAll，外部发射值时，内部Observable可以同时发射值
    ![mergeAll](assets/tmp/img/rxjs/mergeAll.png)
@@ -274,10 +274,10 @@ NEVER.subscribe({
    ![switchAll](assets/tmp/img/rxjs/switchAll.png)
    + exhaust 将高阶Observable展平为低阶Observable，外部发射值时，如果内部Observable未完成，则忽略新的内部Observable
    ![exhaust](assets/tmp/img/rxjs/exhaust.png)
-   + concatMap 相当于concatAll+map
-   + mergeMap 相当于mergeAll+map
-   + switchMap 相当于switchAll+map
-   + exhaustMap 相当于exhaust+map
+   + concatMap 相当于map+concatAll
+   + mergeMap 相当于map+mergeAll
+   + switchMap 相当于map+switchAll
+   + exhaustMap 相当于map+exhaust
 
 + 过滤型操作符
    + filter 过滤，filter(x => x === 10)
@@ -285,9 +285,35 @@ NEVER.subscribe({
    + skipUntil 跳过，传入一个Observable，直到这个Observable发射一个值，之前的都跳过
    + take 拾取，传入一个number，take(5)
    + takeUntil 拾取，传入一个Observable，直到这个Observable发射一个值，之后的都舍弃
-   + debounceTime 防抖，接到一个值之后等待一定的时间，如果有新的值发射，重新计算等待时间
-   + throttleTime 节流，接到第一个值之后立即发射，然后进入等待期，再发射此期间的最新值
-   + auditTime 类似节流，但是不会立即发射第一个值，直接进入等待期
+   + debounceTime 防抖，接到一个值之后，进入等待期，如果有新的值发射，重新计算等待时间
+   ![debounceTime](assets/tmp/img/rxjs/debounceTime.png)
+   + throttleTime 节流，接到一个值之后立即发射，然后进入等待期，并忽略等待期的值
+      + 节流有可选参数，默认{leading:true, trailing:false}，可以配在等待期前、或者等期后发射值
+      ![throttleTime](assets/tmp/img/rxjs/throttleTime.png)
+      + 配置为{leading:false, trailing:true}，可以用来模拟双击
+
+      ```typescript
+      import { fromEvent, asyncScheduler } from 'rxjs';
+      import { throttleTime, withLatestFrom } from 'rxjs/operators';
+      
+      // defaultThottleConfig = { leading: true, trailing: false }
+      const throttleConfig = {
+        leading: false,
+        trailing: true
+      }
+      
+      const click = fromEvent(document, 'click');
+      const doubleClick = click.pipe(
+        throttleTime(400, asyncScheduler, throttleConfig)
+      );
+      
+      doubleClick.subscribe((throttleValue: Event) => {
+        console.log(`Double-clicked! Timestamp: ${throttleValue.timeStamp}`);
+      });
+      ```
+
+   + auditTime 类似节流，但是不会立即发射一个值，直接进入等待期，并发射等待期的最新值
+   ![auditTime](assets/tmp/img/rxjs/auditTime.png)
 
 + 工具型操作符
    + tap 拦截每一个源值，可做一些操作，与map不同的是不会改变源值
