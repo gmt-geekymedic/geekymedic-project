@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "npm run lint:ts && npm run lint:style",
     "e2e": "ng e2e",
-    "analyze": "npm run color-less && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json",
+    "sourcemap": "npm run color-less && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --source-map",
+    "analyze": "npm run color-less && node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng build --prod --stats-json && webpack-bundle-analyzer --port 8123 dist/geekymedic-project/stats-es2015.json",
     "test-coverage": "ng test --code-coverage --watch=false",
     "color-less": "node scripts/color-less.js",
     "icon": "ng g ng-alain:plugin icon",
@@ -91,7 +92,8 @@
     "tslint": "~5.15.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-language-service": "^0.9.9",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "webpack-bundle-analyzer": "^3.5.2"
   },
   "lint-staged": {
     "linters": {
