@@ -3,6 +3,7 @@ import { NgModule, LOCALE_ID, APP_INITIALIZER, Injector } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DelonCacheModule } from '@delon/cache';
 
 // #region default language
 // Reference: https://ng-alain.com/docs/i18n
@@ -106,6 +107,7 @@ import * as _ from 'lodash';
     BrowserAnimationsModule,
     HttpClientModule,
     DelonModule.forRoot(),
+    DelonCacheModule,
     ApiModule,
     CoreModule,
     SharedModule,

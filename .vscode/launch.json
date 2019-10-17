@@ -14,7 +14,7 @@
         "@geekymedic/common:c",
         "test1"
       ],
-      "cwd": "${workspaceFolder}/src/app/routes/test",
+      "cwd": "${workspaceFolder}/src/app/routes/demo",
       "outFiles": []
     },
     {
