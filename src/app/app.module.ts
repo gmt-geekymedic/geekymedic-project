@@ -27,7 +27,7 @@ const LANG_PROVIDES = [
 // #endregion
 // #region i18n services
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { MultiTranslateHttpLoader, TimeoutInterceptor, DEFAULT_TIMEOUT } from '@geekymedic/common';
+import { MultiTranslateHttpLoader } from '@geekymedic/common';
 import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { I18NService } from '@core/services/i18n.service';
 
@@ -62,6 +62,7 @@ const FORM_MODULES = [JsonSchemaModule];
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SimpleInterceptor } from '@delon/auth';
 import { DefaultInterceptor } from '@core/net/default.interceptor';
+import { TimeoutInterceptor, DEFAULT_TIMEOUT } from '@geekymedic/common';
 const INTERCEPTOR_PROVIDES = [
   { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
