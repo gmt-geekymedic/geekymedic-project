@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   useHash: true,
   hmr: false,
-  mock: false,
+  mock: true,
 };
 
 /*
