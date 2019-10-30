@@ -64,12 +64,16 @@ export function fnSTConfig(): STConfig {
     modal: { size: 'lg' },
   };
 }
-
+import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd';
+const ngZorroConfig: NzConfig = {
+  message: { nzMaxStack: 1 },
+};
 const GLOBAL_CONFIG_PROVIDES = [
   // TIPS：@delon/abc 有大量的全局配置信息，例如设置所有 `st` 的页码默认为 `20` 行
   { provide: STConfig, useFactory: fnSTConfig },
   { provide: PageHeaderConfig, useFactory: fnPageHeaderConfig },
   { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
+  { provide: NZ_CONFIG, useValue: ngZorroConfig },
 ];
 
 // #endregion
