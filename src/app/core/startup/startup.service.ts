@@ -55,7 +55,12 @@ export class StartupService {
           // User information: including name, avatar, email address
           this.settingService.setUser(res.user);
           // ACL: Set the permissions to full, https://ng-alain.com/acl/getting-started
-          this.aclService.setFull(true);
+          if (environment.fullAcl) {
+            // ACL：设置权限为全量
+            this.aclService.setFull(true);
+          } else {
+            // ACL：设置权限为非全量
+          }
           // Menu data, https://ng-alain.com/theme/menu
           // 非产品模式添加demo菜单,业务菜单请直接在appdata.json中添加
           if (!environment.production) {

@@ -8,6 +8,7 @@ export const environment = {
   useHash: true,
   hmr: false,
   mock: true,
+  fullAcl: true,
 };
 
 /*

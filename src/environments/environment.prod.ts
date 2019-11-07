@@ -4,4 +4,5 @@ export const environment = {
   useHash: true,
   hmr: false,
   mock: false,
+  fullAcl: false,
 };
