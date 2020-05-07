@@ -5,8 +5,10 @@
 export const environment = {
   SERVER_URL: `./`,
   production: false,
-  useHash: true,
+  useHash: false,
   hmr: true,
+  mock: false,
+  fullAcl: false,
 };
 
 /*

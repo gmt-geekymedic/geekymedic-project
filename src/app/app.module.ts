@@ -28,13 +28,17 @@ const LANG_PROVIDES = [
 ];
 // #endregion
 // #region i18n services
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { I18NService } from '@core';
+import { ALAIN_I18N_TOKEN } from '@delon/theme';
+import { MultiTranslateHttpLoader } from '@geekymedic/common';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 export function I18nHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, `assets/tmp/i18n/`, '.json');
+  return new MultiTranslateHttpLoader(http, [
+    { prefix: `assets/tmp/i18n/`, suffix: '.json' },
+    { prefix: `assets/tmp/dic/`, suffix: '.json' },
+    { prefix: `assets/tmp/dic/bus1/`, suffix: '.json' }, // 根据业务将字典拆分到多个文件夹
+  ]);
 }
 
 const I18NSERVICE_MODULES = [
@@ -42,35 +46,34 @@ const I18NSERVICE_MODULES = [
     loader: {
       provide: TranslateLoader,
       useFactory: I18nHttpLoaderFactory,
-      deps: [HttpClient]
-    }
-  })
+      deps: [HttpClient],
+    },
+  }),
 ];
 
-const I18NSERVICE_PROVIDES = [
-  { provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false }
-];
+const I18NSERVICE_PROVIDES = [{ provide: ALAIN_I18N_TOKEN, useClass: I18NService, multi: false }];
 // #region
 
 // #region JSON Schema form (using @delon/form)
 import { JsonSchemaModule } from '@shared';
-const FORM_MODULES = [ JsonSchemaModule ];
+const FORM_MODULES = [JsonSchemaModule];
 // #endregion
-
 
 // #region Http Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultInterceptor } from '@core';
 import { SimpleInterceptor } from '@delon/auth';
+import { DEFAULT_TIMEOUT, TimeoutInterceptor } from '@geekymedic/core';
 const INTERCEPTOR_PROVIDES = [
-  { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true},
-  { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true}
+  { provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true },
+  { provide: DEFAULT_TIMEOUT, useValue: 30000 },
 ];
 // #endregion
 
 // #region global third module
-const GLOBAL_THIRD_MODULES = [
-];
+const GLOBAL_THIRD_MODULES = [];
 // #endregion
 
 // #region Startup Service
@@ -84,11 +87,12 @@ const APPINIT_PROVIDES = [
     provide: APP_INITIALIZER,
     useFactory: StartupServiceFactory,
     deps: [StartupService],
-    multi: true
-  }
+    multi: true,
+  },
 ];
 // #endregion
 
+import * as _ from 'lodash';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { GlobalConfigModule } from './global-config.module';
@@ -98,9 +102,7 @@ import { SharedModule } from './shared/shared.module';
 import { STWidgetModule } from './shared/st-widget/st-widget.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -113,14 +115,9 @@ import { STWidgetModule } from './shared/st-widget/st-widget.module';
     STWidgetModule,
     ...I18NSERVICE_MODULES,
     ...FORM_MODULES,
-    ...GLOBAL_THIRD_MODULES
+    ...GLOBAL_THIRD_MODULES,
   ],
-  providers: [
-    ...LANG_PROVIDES,
-    ...INTERCEPTOR_PROVIDES,
-    ...I18NSERVICE_PROVIDES,
-    ...APPINIT_PROVIDES
-  ],
-  bootstrap: [AppComponent]
+  providers: [...LANG_PROVIDES, ...INTERCEPTOR_PROVIDES, ...I18NSERVICE_PROVIDES, ...APPINIT_PROVIDES],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

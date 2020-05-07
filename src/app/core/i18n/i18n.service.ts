@@ -118,6 +118,17 @@ export class I18NService implements AlainI18NService {
   fanyi(key: string, interpolateParams?: {}) {
     return this.translate.instant(key, interpolateParams);
   }
+  /**
+   * 获取字典
+   * @param key 键
+   * @param isNum 返回结果的键是否为number，默认为false
+   */
+  getDic(key: string, isNum?: boolean): any[] {
+    const dic = this.translate.instant(key) || {};
+    return Array.isArray(dic)
+      ? dic
+      : Object.keys(dic).map((l) => ({ key: isNum ? (isNaN(parseInt(l)) ? l : parseInt(l)) : l, value: dic[l] }));
+  }
   /** 默认语言 */
   get defaultLang() {
     return this._default;

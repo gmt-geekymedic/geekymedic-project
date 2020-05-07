@@ -11,7 +11,7 @@ import { DelonACLModule } from '@delon/acl';
 
 const alainConfig: AlainConfig = {
   st: { modal: { size: 'lg' } },
-  pageHeader: { homeI18n: 'home' },
+  pageHeader: { home: '首页', autoTitle: false },
   lodop: {
     license: `A59B099A586B3851E0F0D7FDBF37B603`,
     licenseA: `C94CEE276DB2187AE6B65D56B3FC2848`,
@@ -41,13 +41,13 @@ if (!environment.production) {
  *  </section>
  *  ```
  */
-// import { RouteReuseStrategy } from '@angular/router';
-// import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
-// alainProvides.push({
-//   provide: RouteReuseStrategy,
-//   useClass: ReuseTabStrategy,
-//   deps: [ReuseTabService],
-// } as any);
+import { RouteReuseStrategy } from '@angular/router';
+import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
+alainProvides.push({
+  provide: RouteReuseStrategy,
+  useClass: ReuseTabStrategy,
+  deps: [ReuseTabService],
+} as any);
 
 // #endregion
 
@@ -58,7 +58,7 @@ if (!environment.production) {
 
 import { NzConfig, NZ_CONFIG } from 'ng-zorro-antd/core/config';
 
-const ngZorroConfig: NzConfig = {};
+const ngZorroConfig: NzConfig = { message: { nzMaxStack: 1 } };
 
 const zorroProvides = [{ provide: NZ_CONFIG, useValue: ngZorroConfig }];
 
